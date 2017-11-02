@@ -36,7 +36,7 @@ use work.Montgomery_multiplier_parameters.all;
 entity Montgomery_multiplier_modif is
 generic(
     K   : integer;
-    logK: integer;
+    logK: integer
 );
 port (
   x, y, M: in std_logic_vector(K-1 downto 0);
