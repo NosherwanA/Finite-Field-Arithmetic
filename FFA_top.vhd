@@ -73,78 +73,61 @@ architecture overall of FFA_top is
 
 	-- COMPONENT DECLARATION
 	
-	component Montgomery_multiplier is
-
-		generic(
-			K   				: integer;
-			logK				: integer
+	component Wallace_Multiplier is 
+		port(
+			x		: in std_logic_vector(7 downto 0);
+			y		: in std_logic_vector(7 downto 0);
+			p		: out	std_logic_vector(15 downto 0)
 		);
-		port (
-			x					: in std_logic_vector(K-1 downto 0);
-			y					: in std_logic_vector(K-1 downto 0);
-			M					: in std_logic_vector(K-1 downto 0);
-			clk				: in std_logic;
-			reset				: in std_logic;
-			start				: in std_logic;
-			z					: out std_logic_vector(K-1 downto 0);
-			done				: out std_logic
-		);
-		
 	end component;
-
 	
+	signal in1, in2		: std_logic_vector(7 downto 0);
+	signal ou				: std_logic_vector(15 downto 0);
 	
 	-- INTERNAL SIGNALS 
-	signal x_input		: std_logic_vector(7 downto 0);
-	signal y_input		: std_logic_vector(7 downto 0);
-	signal M_input		: std_logic_vector(7 downto 0);
-	signal b_start		: std_logic;
-	signal output		: std_logic_vector(7 downto 0);
-	signal l_done		: std_logic;
-	
-	signal input_controller 	: std_logic_vector(1 downto 0);
+--	signal x_input		: std_logic_vector(7 downto 0);
+--	signal y_input		: std_logic_vector(7 downto 0);
+--	signal M_input		: std_logic_vector(7 downto 0);
+--	signal b_start		: std_logic;
+--	signal output		: std_logic_vector(7 downto 0);
+--	signal l_done		: std_logic;
+--	
+--	signal input_controller 	: std_logic_vector(1 downto 0);
 
 begin
 
 	-- YOUR CODE HERE 
 	
-	input_controller <= SW(9 downto 8);
+--	input_controller <= SW(9 downto 8);
+--	
+--	LEDR(7 downto 0) <= output;
+--	LEDR(8) <= l_done;
+--	
+--	b_start <= KEY(0);
 	
-	LEDR(7 downto 0) <= output;
-	LEDR(8) <= l_done;
-	
-	b_start <= KEY(0);
-	
-	with input_controller select x_input <=
-		"00000000" when "00",
-		SW(7 downto 0) when "01",
-		"00000000" when "10",
-		"00000000" when "11";
-	
-	with input_controller select y_input <=
-		"00000000" when "00",
-		SW(7 downto 0) when "10",
-		"00000000" when "01",
-		"00000000" when "11";
-		
-	with input_controller select M_input <=
-		"00000000" when "00",
-		SW(7 downto 0) when "11",
-		"00000000" when "10",
-		"00000000" when "01";
-		
-	
-	
-	myMontMult: Montgomery_multiplier 
-		generic map(
-			K => 8,
-			logK => 3)
-		port map(
-			x_input, y_input, M_input, CLOCK_50, RESET_N, b_start, output, l_done
-			);
+--	with input_controller select x_input <=
+--		"00000000" when "00",
+--		SW(7 downto 0) when "01",
+--		"00000000" when "10",
+--		"00000000" when "11";
+--	
+--	with input_controller select y_input <=
+--		"00000000" when "00",
+--		SW(7 downto 0) when "10",
+--		"00000000" when "01",
+--		"00000000" when "11";
+--		
+--	with input_controller select M_input <=
+--		"00000000" when "00",
+--		SW(7 downto 0) when "11",
+--		"00000000" when "10",
+--		"00000000" when "01";
+--		
+	in1 <= "10100101";
+	in2 <= "11011110";
 	
 	
-		
+		mult: Wallace_Multiplier port map(in1,in2,ou);
 	
 	
 
