@@ -7,8 +7,8 @@ entity FA_2 is
 		a		: in std_logic;
 		b		: in std_logic;
 		c_in	: in std_logic;
-		sum	: out std_logic;
-		c_out	: out std_logic
+		c_out	: out std_logic;
+		sum		: out std_logic
 	);
 end FA_2;
 

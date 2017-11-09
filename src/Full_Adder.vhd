@@ -7,8 +7,8 @@ entity FA is
 		a		: in std_logic;
 		b		: in std_logic;
 		c_in	: in std_logic;
-		sum	: out std_logic;
-		c_out	: out std_logic
+		c_out	: out std_logic;
+		sum		: out std_logic
 	);
 end FA;
 
@@ -20,7 +20,7 @@ architecture internal of FA is
 begin
 
 	x <= a XOR b;
-	y <= x XNOR b;
+	y <= a XNOR b;
 	
 	sum <= ((c_in AND y) OR ((NOT c_in) AND x));
 	c_out <= ((c_in AND x) OR ((NOT x) AND a)); 

@@ -24,8 +24,8 @@ architecture internal of Wallace_Multiplier is
 		port(
 			a		: in std_logic;
 			b		: in std_logic;
-			sum	: out std_logic;
-			c_out	: out std_logic
+			c_out	: out std_logic;
+			sum		: out std_logic
 		);
 	end component;
 	
@@ -34,8 +34,8 @@ architecture internal of Wallace_Multiplier is
 			a		: in std_logic;
 			b		: in std_logic;
 			c_in	: in std_logic;
-			sum	: out std_logic;
-			c_out	: out std_logic
+			c_out	: out std_logic;
+			sum		: out std_logic
 		);
 	end component;
 	
@@ -44,8 +44,8 @@ architecture internal of Wallace_Multiplier is
 			a		: in std_logic;
 			b		: in std_logic;
 			c_in	: in std_logic;
-			sum	: out std_logic;
-			c_out	: out std_logic
+			c_out	: out std_logic;
+			sum		: out std_logic
 		);
 	end component;
 	
@@ -61,7 +61,7 @@ begin
 	ip1(4) <= y(0) AND x(5);
 	ip1(5) <= y(0) AND x(6);
 	ip1(6) <= y(0) AND x(7);
-	si(0) <= ip1(6);
+	si(0) <= NOT ip1(6);
 	
 	-- second AND array
 	
@@ -73,7 +73,7 @@ begin
 	ip2(5) <= y(1) AND x(5);
 	ip2(6) <= y(1) AND x(6);
 	ip2(7) <= y(1) AND x(7);
-	si(1) <= ip2(7);
+	si(1) <= NOT ip2(7);
 	
 	-- Third AND array
 	
@@ -85,7 +85,7 @@ begin
 	ip3(5) <= y(2) AND x(5);
 	ip3(6) <= y(2) AND x(6);
 	ip3(7) <= y(2) AND x(7);
-	si(2) <= ip3(7);
+	si(2) <= NOT ip3(7);
 	
 	-- Fourth AND array
 	
@@ -97,7 +97,7 @@ begin
 	ip4(5) <= y(3) AND x(5);
 	ip4(6) <= y(3) AND x(6);
 	ip4(7) <= y(3) AND x(7);
-	si(3) <= ip4(7);
+	si(3) <= NOT ip4(7);
 	
 	-- Fifth AND array
 	
@@ -109,7 +109,7 @@ begin
 	ip5(5) <= y(4) AND x(5);
 	ip5(6) <= y(4) AND x(6);
 	ip5(7) <= y(4) AND x(7);
-	si(4) <= ip5(7);
+	si(4) <= NOT ip5(7);
 	
 	-- Sixth AND array
 	
@@ -121,7 +121,7 @@ begin
 	ip6(5) <= y(5) AND x(5);
 	ip6(6) <= y(5) AND x(6);
 	ip6(7) <= y(5) AND x(7);
-	si(5) <= ip6(7);
+	si(5) <= NOT ip6(7);
 	
 	-- Seventh AND array
 	
@@ -133,7 +133,7 @@ begin
 	ip7(5) <= y(6) AND x(5);
 	ip7(6) <= y(6) AND x(6);
 	ip7(7) <= y(6) AND x(7);
-	si(6) <= ip7(7);
+	si(6) <= NOT ip7(7);
 	
 	-- Eighth AND array
 	
@@ -154,7 +154,7 @@ begin
 	ip8(5) <= y(7) XOR iip(5);
 	ip8(6) <= y(7) XOR iip(6);
 	ip8(7) <= y(7) XOR iip(7);
-	si(7) <= ip8(7);
+	si(7) <= NOT ip8(7);
 	
 	-- First adder array
 	

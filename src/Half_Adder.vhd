@@ -6,8 +6,8 @@ entity HA is
 	port(
 		a		: in std_logic;
 		b		: in std_logic;
-		sum	: out std_logic;
-		c_out	: out std_logic
+		c_out	: out std_logic;
+		sum		: out std_logic
 	);
 end HA;
 
