@@ -1,12 +1,8 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE IEEE.std_logic_arith.all;
-USE ieee.std_logic_signed.all;
 USE ieee.std_logic_unsigned.all;
 USE ieee.numeric_std.ALL;
-USE ieee.std_logic_textio.ALL;
-USE std.textio.ALL;
-
 
 ENTITY test_srt_reduction IS
 END test_srt_reduction;

@@ -8,18 +8,19 @@ end tb_wallace_multiplier;
 
 architecture test of tb_wallace_multiplier is
 
-    entity Wallace_Multiplier is 
+    component Wallace_Multiplier is 
         port(
             x       : in std_logic_vector(7 downto 0);
             y       : in std_logic_vector(7 downto 0);
             p       : out std_logic_vector(15 downto 0)
         );
+    end component;
 
     signal in_x     : std_logic_vector(7 downto 0);
     signal in_y     : std_logic_vector(7 downto 0);
     signal out_p    : std_logic_vector(15 downto 0);
 
-    constant DELTA_TIME     : time := 50 ns;
+    constant DELTA_TIME     : time := 5 ns;
 
 begin
 
@@ -32,6 +33,7 @@ begin
         
 
     simulation : process
+    begin
 
     in_x <= "11111111";
     in_y <= "11111111";
@@ -69,4 +71,4 @@ begin
     wait for DELTA_TIME;
 
     end process simulation;
-end test ; -tb_wallace_multiplieresttb_wallace_multiplier
+end architecture; --tb_wallace_multiplieresttb_wallace_multiplier
