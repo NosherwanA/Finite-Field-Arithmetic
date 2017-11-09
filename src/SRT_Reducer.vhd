@@ -28,7 +28,7 @@ architecture rtl of srt_reducer is
 
     constant N: natural := 15;
     constant K: natural := 8;
-    constant COUNTER_SIZE: natural := 4;
+    constant COUNTER_SIZE: natural := 3;
     constant ZERO: std_logic_vector(counter_size-1 downto 0) := (others => '0');
 
     signal ss: std_logic_vector(N+1 downto 0);
