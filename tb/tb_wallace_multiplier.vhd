@@ -10,9 +10,9 @@ architecture test of tb_wallace_multiplier is
 
     component Wallace_Multiplier is 
         port(
-            x       : in std_logic_vector(7 downto 0);
-            y       : in std_logic_vector(7 downto 0);
-            p       : out std_logic_vector(15 downto 0)
+            a       : in std_logic_vector(7 downto 0);
+            b       : in std_logic_vector(7 downto 0);
+            product : out std_logic_vector(15 downto 0)
         );
     end component;
 
