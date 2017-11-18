@@ -252,7 +252,6 @@ set_location_assignment PIN_C9 -to VGA_R[2]
 set_location_assignment PIN_A5 -to VGA_R[3]
 set_location_assignment PIN_G8 -to VGA_VS
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
-set_global_assignment -name VERILOG_FILE DE0_CV_golden_top.v
 set_global_assignment -name OPTIMIZATION_TECHNIQUE SPEED
 set_global_assignment -name SYNTH_TIMING_DRIVEN_SYNTHESIS ON
 set_global_assignment -name OPTIMIZE_HOLD_TIMING "ALL PATHS"
@@ -271,7 +270,6 @@ set_global_assignment -name BOARD "DE0-CV Development Board"
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
-set_global_assignment -name VHDL_FILE FFA_top.vhd
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
@@ -481,6 +479,13 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[1]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[2]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[3]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_VS
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name EDA_NATIVELINK_GENERATE_SCRIPT_ONLY ON -section_id eda_simulation
+set_global_assignment -name VERILOG_FILE DE0_CV_golden_top.v
+set_global_assignment -name VHDL_FILE FFA_top.vhd
 set_global_assignment -name VHDL_FILE src/Montgomery_multiplier.vhd
 set_global_assignment -name VHDL_FILE src/Montogomery_step.vhd
 set_global_assignment -name VHDL_FILE src/Montgomery_Multiplier.vhd
@@ -488,9 +493,6 @@ set_global_assignment -name VHDL_FILE src/Half_Adder.vhd
 set_global_assignment -name VHDL_FILE src/Full_Adder.vhd
 set_global_assignment -name VHDL_FILE src/Full_Adder_Type2.vhd
 set_global_assignment -name VHDL_FILE src/Wallace_Multiplier.vhd
-set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
-set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
-set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name EDA_NATIVELINK_GENERATE_SCRIPT_ONLY ON -section_id eda_simulation
+set_global_assignment -name VHDL_FILE src/Modular_Multiplier.vhd
+set_global_assignment -name VHDL_FILE tb/tb_Modular_Multiplier.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

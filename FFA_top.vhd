@@ -81,6 +81,17 @@ architecture overall of FFA_top is
 		);
 	end component;
 	
+	
+	component Modular_Multiplier is
+    port(
+        x           : in std_logic_vector(7 downto 0);
+        y           : in std_logic_vector(7 downto 0);
+        m           : in std_logic_vector(7 downto 0);
+        result      : out std_logic_vector(7 downto 0)
+
+	);
+	end component;
+	
 	signal in1, in2		: std_logic_vector(7 downto 0);
 	signal ou				: std_logic_vector(15 downto 0);
 	

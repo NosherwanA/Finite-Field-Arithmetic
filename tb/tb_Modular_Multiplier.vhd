@@ -32,7 +32,7 @@ architecture test of tb_Modular_Multiplier is
             in_x,
             in_y,
             in_m,
-            out_p
+            out_result
         );
         
         simulation : process
