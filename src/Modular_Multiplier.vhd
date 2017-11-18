@@ -27,7 +27,7 @@ architecture internal of Modular_Multiplier is
     end component;
 
     --State Machine Variables
-    type State is (A,B,C,D);
+    type State is (A,B,C,D,E,F);
     signal curr_state       : State;
     signal next_state       : State;
 
@@ -63,8 +63,8 @@ begin
         begin
             case curr_state is
                 when A =>
-                    num1 <= "00000000"
-                    num2 <= "00000000"
+                    num1 <= "00000000";
+                    num2 <= "00000000";
 
                     if (start = '1') then
                         next_state <= B;
@@ -91,12 +91,32 @@ begin
                 when C =>
                     int_product <= to_integer(unsigned(product));
                     int_modulus <= to_integer(unsigned(m));
-                    int_remainder <= int_product mod int_modulus;
-                    remainder <= std_logic_vector(to_unsigned(int_remainder, 8));
 
-                    next_state <= D;
+                    if ((int_product = 0) OR (int_modulus = 0)) then
+                        next_state <= C;
+                    else
+                        next_state <= D;
+                    end if;
                 
                 when D =>
+                    int_remainder <= int_product mod int_modulus;
+
+                    if (int_remainder = 0) then
+                        next_state <= D;
+                    else
+                        next_state <= E;
+                    end if;
+
+                when E =>
+                    remainder <= std_logic_vector(to_unsigned(int_remainder, 8));
+
+                    if (remainder = "00000000") then 
+                        next_state <= E;
+                    else
+                        next_state <= F;
+                    end if;
+                
+                when F =>
                     if (reset = '1') then 
                         next_state <= A;
                     else 
@@ -114,25 +134,37 @@ begin
         begin
             case curr_state is 
                 when A =>
-                    result <= "00000000"
+                    result <= "00000000";
                     done <= '0';
                     busy <= '0';
                 
                 when B =>
-                    result <= "00000000"
+                    result <= "00000000";
                     done <= '0';
                     busy <= '1';
                 
                 when C =>
-                    result <= "00000000"
+                    result <= "00000000";
                     done <= '0';
                     busy <= '1';
+                
                 when D =>
+                    result <= "00000000";
+                    done <= '0';
+                    busy <= '1';
+
+                when E =>
+                    result <= "00000000";
+                    done <= '0';
+                    busy <= '1';
+
+                when F =>
                     result <= remainder;
                     done <= '1';
                     busy <= '0';
+                    
                 when others =>
-                    result <= "00000000"
+                    result <= "00000000";
                     done <= '0';
                     busy <= '0';
             end case;

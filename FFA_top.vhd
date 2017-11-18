@@ -87,13 +87,18 @@ architecture overall of FFA_top is
         x           : in std_logic_vector(7 downto 0);
         y           : in std_logic_vector(7 downto 0);
         m           : in std_logic_vector(7 downto 0);
-        result      : out std_logic_vector(7 downto 0)
-
-	);
+        result      : out std_logic_vector(7 downto 0);
+        clk         : in std_logic;
+        start       : in std_logic;
+        reset       : in std_logic;
+        done        : out std_logic;
+        busy        : out std_logic
+    );
 	end component;
 	
-	signal in1, in2		: std_logic_vector(7 downto 0);
-	signal ou				: std_logic_vector(15 downto 0);
+	signal in1, in2, m		: std_logic_vector(7 downto 0);
+	signal ou				: std_logic_vector(7 downto 0);
+	signal start, busy, done : std_logic;
 	
 	-- INTERNAL SIGNALS 
 --	signal x_input		: std_logic_vector(7 downto 0);
@@ -136,9 +141,11 @@ begin
 --		
 	in1 <= "10100101";
 	in2 <= "11011110";
+	m <= "11111111";
+	start <= '1';
 	
 	
-		mult: Wallace_Multiplier port map(in1,in2,ou);
+		mult: Modular_Multiplier port map(in1,in2, m, ou, CLOCK_50, start, resET_N, done, busy);
 	
 	
 

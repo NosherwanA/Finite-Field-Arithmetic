@@ -42,7 +42,12 @@ architecture test of tb_Modular_Multiplier is
             in_x,
             in_y,
             in_m,
-            out_result
+            out_result,
+				in_clk,
+				in_start,
+				in_reset,
+				out_done,
+				out_busy
         );
 
         clock_process: process
@@ -57,12 +62,12 @@ architecture test of tb_Modular_Multiplier is
         begin
             -- rising edge of clock firs one at 10 ns then every 20ns
             in_reset <= '0';
-            wait for 15 ns;
-            in_reset <= '1';
-            in_start <= '1';
             in_x <= "01000010";
             in_y <= "11111101";
             in_m <= "01110101";
+            wait for 15 ns;
+            in_reset <= '1';
+            in_start <= '1';
             wait for 20 ns;
             in_start <= '0';
             wait until (out_done = '1');
@@ -70,12 +75,12 @@ architecture test of tb_Modular_Multiplier is
             wait for DELTA_TIME;
 
             in_reset <= '0';
-            wait for 15 ns;
-            in_reset <= '1';
-            in_start <= '1';
             in_x <= "10001100";
             in_y <= "00111011";
             in_m <= "10011000";
+            wait for 15 ns;
+            in_reset <= '1';
+            in_start <= '1';
             wait for 20 ns;
             in_start <= '0';
             wait until (out_done = '1');
@@ -83,12 +88,12 @@ architecture test of tb_Modular_Multiplier is
             wait for DELTA_TIME;
 
             in_reset <= '0';
-            wait for 15 ns;
-            in_reset <= '1';
-            in_start <= '1';
             in_x <= "01110100";
             in_y <= "11100101";
             in_m <= "10010100";
+            wait for 15 ns;
+            in_reset <= '1';
+            in_start <= '1';
             wait for 20 ns;
             in_start <= '0';
             wait until (out_done = '1');
@@ -96,25 +101,25 @@ architecture test of tb_Modular_Multiplier is
             wait for DELTA_TIME;
 
             in_reset <= '0';
-            wait for 15 ns;
-            in_reset <= '1';
-            in_start <= '1';
             in_x <= "11110011";
             in_y <= "10010111";
             in_m <= "01000010";
-            wait for 20 ns;
-            in_start <= '0';
-            wait until (out_done = '1');
-            --result: 01000000
-            wait for DELTA_TIME;
-
-            in_reset <= '0';
             wait for 15 ns;
             in_reset <= '1';
             in_start <= '1';
+            wait for 20 ns;
+            in_start <= '0';
+            wait until (out_done = '1');
+            --result: 00111111
+            wait for DELTA_TIME;
+
+            in_reset <= '0';
             in_x <= "11111111";
             in_y <= "11111111";
             in_m <= "00001100";
+            wait for 15 ns;
+            in_reset <= '1';
+            in_start <= '1';
             wait for 20 ns;
             in_start <= '0';
             wait until (out_done = '1');
