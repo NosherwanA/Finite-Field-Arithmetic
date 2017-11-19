@@ -24,6 +24,20 @@ architecture internal of Modular_Exponentiator is
     signal curr_state       : State_Type;
     signal next_state       : State_Type;
 
+    constant ITERATIONS     : integer:= ((to_integer(unsigned(exponent))) - 1);
+    signal counter          : integer:= 0;
+
+    signal num1             : std_logic_vector(7 downto 0);
+    signal num2             : std_logic_vector(7 downto 0);
+    signal mm_mod           : std_logic_vector(7 downto 0);
+    signal mm_result        : std_logic_vector(7 downto 0);
+    signal mm_start         : std_logic;
+    signal mm_reset         : std_logic;
+    signal mm_busy          : std_logic;
+    signal mm_done          : std_logic;
+
+    signal temp             : std_logic_vector(7 downto 0);
+
     -- COMPONENTS
     component Modular_Multiplier is
         port(
@@ -43,6 +57,20 @@ architecture internal of Modular_Exponentiator is
 
     begin
 
+        Mod_Mult: Modular_Multiplier
+            port map(
+                num1,
+                num2,
+                mm_mod,
+                mm_result,
+                clk,
+                mm_start,
+                mm_reset,
+                mm_done,
+                mm_busy
+            );
+
+
         Register_Section: process (clk, reset)
         begin
             
@@ -61,24 +89,43 @@ architecture internal of Modular_Exponentiator is
 
             case curr_state is
                 when A =>
-                    If (start = '1') then 
-                        next_state <= B;
+                    mm_reset <= '0';
+                    num1 <= "00000000";
+                    num2 <= "00000000";
 
+                    If (start = '1') then 
+                        mm_reset <= '1';
+                        num1 <= base;
+                        num2 <= base;
+                        next_state <= B;
                     else
                         next_state <= A;
                     end if;
                 when B =>
+                    mm_start <= '1';
 
-
-
-                    next_state <= C;
+                    if (mm_busy = '1') then 
+                        next_state <= B;
+                    else
+                        next_state <= C;
+                    end if;
 
                 when C =>
+                    temp <= mm_result;
+                    mm_start <= '0';
+                    mm_reset <= '0';
+                    counter <= counter + 1;
+
+                    if(counter = ITERATIONS) then 
+                        next_state <= D;
+                    else
+                        num2 <= temp;
+                        mm_reset <= '1';
+                        next_state <= B;
+                    end if;
 
                 when D =>
                     if (reset = '0') then
-
-
                         next_state <= A;
                     else
                         next_state <= D;
@@ -93,15 +140,19 @@ architecture internal of Modular_Exponentiator is
 
             case curr_state is
                 when A =>
+                    result <= "00000000";
                     busy <= '0';
                     done <= '0';
                 when B =>
+                    result <= "00000000";
                     busy <= '1';
                     done <= '0';
                 when C =>
+                    result <= "00000000";
                     busy <= '1';
                     done <= '0';
                 when D =>
+                    result <= temp;
                     busy <= '0';
                     done <= '1';
             end case;            
