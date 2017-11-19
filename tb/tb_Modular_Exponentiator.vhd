@@ -42,12 +42,12 @@ architecture test of tb_Modular_Exponentiator is
             in_base,
             in_exponent,
             in_modulus,
-            out_result,
             in_clk,
-            in_start,
             in_reset,
-            out_done,
-            out_busy
+            in_start,
+            out_busy,
+            out_result,
+            out_done
         );
 
         clock_process: process
