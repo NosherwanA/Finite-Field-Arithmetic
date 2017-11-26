@@ -22,9 +22,9 @@ VXefXJT:[4iFi3je4MZzf^3
 !s100 2=<lJ`WYAnf1dIBGY0mn@2
 Z7 OV;C;10.5b;63
 32
-Z8 !s110 1511716315
+Z8 !s110 1511723000
 !i10b 1
-Z9 !s108 1511716314.000000
+Z9 !s108 1511723000.000000
 Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/src/Full_Adder.vhd|
 Z11 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/src/Full_Adder.vhd|
 !i113 1
@@ -65,9 +65,9 @@ R7
 32
 R8
 !i10b 1
-Z17 !s108 1511716315.000000
-Z18 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/src/Full_Adder_Type2.vhd|
-Z19 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/src/Full_Adder_Type2.vhd|
+R9
+Z17 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/src/Full_Adder_Type2.vhd|
+Z18 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/src/Full_Adder_Type2.vhd|
 !i113 1
 R12
 R13
@@ -84,29 +84,29 @@ R7
 32
 R8
 !i10b 1
+R9
 R17
 R18
-R19
 !i113 1
 R12
 R13
 Eha
-Z20 w1510509418
+Z19 w1510509418
 R1
 R2
 R3
 R4
-Z21 8D:/Quartus_Projects/Finite_Field_Arithmetic/src/Half_Adder.vhd
-Z22 FD:/Quartus_Projects/Finite_Field_Arithmetic/src/Half_Adder.vhd
+Z20 8D:/Quartus_Projects/Finite_Field_Arithmetic/src/Half_Adder.vhd
+Z21 FD:/Quartus_Projects/Finite_Field_Arithmetic/src/Half_Adder.vhd
 l0
 L5
 VD1GDH5AJh:i`D`<ZJI;DM3
 !s100 V;UzFUI:QV3GSW3IkZG9:3
 R7
 32
-R8
+Z22 !s110 1511723001
 !i10b 1
-R17
+R9
 Z23 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/src/Half_Adder.vhd|
 Z24 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/src/Half_Adder.vhd|
 !i113 1
@@ -123,9 +123,9 @@ VY7GJ9X3zN?BGfd9YH;;8[0
 !s100 G[DH7hem`74Dhi1f<ngZG0
 R7
 32
-R8
+R22
 !i10b 1
-R17
+R9
 R23
 R24
 !i113 1
@@ -145,11 +145,11 @@ VXXoWQfU;GmJOQlKS;6bjg3
 !s100 Yc>g^z`XU?55HZWThK2?G3
 R7
 32
-Z28 !s110 1511716317
+R22
 !i10b 1
-Z29 !s108 1511716317.000000
-Z30 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/src/Modular_Exponentiator.vhd|
-Z31 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/src/Modular_Exponentiator.vhd|
+Z28 !s108 1511723001.000000
+Z29 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/src/Modular_Exponentiator.vhd|
+Z30 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/src/Modular_Exponentiator.vhd|
 !i113 1
 R12
 R13
@@ -164,33 +164,33 @@ V`9Q?gTZDaKajITLh5ahLb2
 !s100 chDflaSlNgLNGeOE9T6B71
 R7
 32
-R28
+R22
 !i10b 1
+R28
 R29
 R30
-R31
 !i113 1
 R12
 R13
 Emodular_multiplier
-Z32 w1511031081
+Z31 w1511722982
 R1
 R2
 R3
 R4
-Z33 8D:/Quartus_Projects/Finite_Field_Arithmetic/src/Modular_Multiplier.vhd
-Z34 FD:/Quartus_Projects/Finite_Field_Arithmetic/src/Modular_Multiplier.vhd
+Z32 8D:/Quartus_Projects/Finite_Field_Arithmetic/src/Modular_Multiplier.vhd
+Z33 FD:/Quartus_Projects/Finite_Field_Arithmetic/src/Modular_Multiplier.vhd
 l0
 L5
 VdR<>=mGm;i2VNN@XE6>3n3
 !s100 b5GD5HFJ`hLaJ7YAohA4W2
 R7
 32
-Z35 !s110 1511716316
+R22
 !i10b 1
-Z36 !s108 1511716316.000000
-Z37 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/src/Modular_Multiplier.vhd|
-Z38 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/src/Modular_Multiplier.vhd|
+R28
+Z34 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/src/Modular_Multiplier.vhd|
+Z35 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/src/Modular_Multiplier.vhd|
 !i113 1
 R12
 R13
@@ -201,44 +201,44 @@ R3
 DEx4 work 18 modular_multiplier 0 22 dR<>=mGm;i2VNN@XE6>3n3
 l42
 L19
-Vl[ZJf8k;6bi_2JN>cQo9Q1
-!s100 URBf:meEh39UAM]4FKd;<1
+VUU`2Ez2UOVj3<MPj:ES:93
+!s100 []VdCTXC[1Q^@@9S<C=<`2
 R7
 32
-R35
+R22
 !i10b 1
-R36
-R37
-R38
+R28
+R34
+R35
 !i113 1
 R12
 R13
 Esrt_reducer
 R14
-Z39 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
-Z40 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z36 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z37 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
 R2
 R3
 R4
-Z41 8D:/Quartus_Projects/Finite_Field_Arithmetic/src/SRT_Reducer.vhd
-Z42 FD:/Quartus_Projects/Finite_Field_Arithmetic/src/SRT_Reducer.vhd
+Z38 8D:/Quartus_Projects/Finite_Field_Arithmetic/src/SRT_Reducer.vhd
+Z39 FD:/Quartus_Projects/Finite_Field_Arithmetic/src/SRT_Reducer.vhd
 l0
 L14
 V2Hhz0AaW4ICDY=n`98<`O3
 !s100 FT]Wij7QCeP57?TCa4FbZ0
 R7
 32
-R8
+R22
 !i10b 1
-R17
-Z43 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/src/SRT_Reducer.vhd|
-Z44 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/src/SRT_Reducer.vhd|
+R28
+Z40 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/src/SRT_Reducer.vhd|
+Z41 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/src/SRT_Reducer.vhd|
 !i113 1
 R12
 R13
 Artl
-R39
-R40
+R36
+R37
 R2
 R3
 DEx4 work 11 srt_reducer 0 22 2Hhz0AaW4ICDY=n`98<`O3
@@ -248,33 +248,33 @@ VTOF7`dGieO[@4eJGCRZFM3
 !s100 6nRmS`BiOWHO>YnRam1Kd2
 R7
 32
-R35
+R22
 !i10b 1
-R17
-R43
-R44
+R28
+R40
+R41
 !i113 1
 R12
 R13
 Etb_modular_exponentiator
-Z45 w1511127362
+Z42 w1511721242
 R1
 R2
 R3
 R4
-Z46 8D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_Modular_Exponentiator.vhd
-Z47 FD:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_Modular_Exponentiator.vhd
+Z43 8D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_Modular_Exponentiator.vhd
+Z44 FD:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_Modular_Exponentiator.vhd
 l0
 L5
 VU[zBA7ljdWRJLGaC0Iio80
 !s100 Ma9KXI;GmUa3U[XK_MNJF2
 R7
 32
-R28
+R22
 !i10b 1
-R29
-Z48 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_Modular_Exponentiator.vhd|
-Z49 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_Modular_Exponentiator.vhd|
+R28
+Z45 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_Modular_Exponentiator.vhd|
+Z46 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_Modular_Exponentiator.vhd|
 !i113 1
 R12
 R13
@@ -282,40 +282,40 @@ Atest
 R1
 R2
 R3
-Z50 DEx4 work 24 tb_modular_exponentiator 0 22 U[zBA7ljdWRJLGaC0Iio80
+Z47 DEx4 work 24 tb_modular_exponentiator 0 22 U[zBA7ljdWRJLGaC0Iio80
 l38
 L9
-Z51 VBkjhM:?jJMf?3MI`9LL5^3
-Z52 !s100 5ZT1bDff>keN;ZKWUI6il3
+Z48 VkOO7;T_Mihh2i5jRkl_^U1
+Z49 !s100 8ZT3L>4jL3]VgefHiJ;AB1
 R7
 32
-R28
+R22
 !i10b 1
-R29
-R48
-R49
+R28
+R45
+R46
 !i113 1
 R12
 R13
 Etb_modular_multiplier
-Z53 w1511032623
+Z50 w1511032623
 R1
 R2
 R3
 R4
-Z54 8D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_Modular_Multiplier.vhd
-Z55 FD:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_Modular_Multiplier.vhd
+Z51 8D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_Modular_Multiplier.vhd
+Z52 FD:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_Modular_Multiplier.vhd
 l0
 L5
 VaOlzCRg:NfT`2CYCkm_n31
 !s100 XGaIRZgNWdP7<iH>XZoPn0
 R7
 32
-R28
+R22
 !i10b 1
-R36
-Z56 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_Modular_Multiplier.vhd|
-Z57 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_Modular_Multiplier.vhd|
+R28
+Z53 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_Modular_Multiplier.vhd|
+Z54 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_Modular_Multiplier.vhd|
 !i113 1
 R12
 R13
@@ -330,33 +330,33 @@ VPh@22DhCb3JoK]fVkYK7j1
 !s100 k2f;E04<kC[<Hb>254Hkn1
 R7
 32
-R28
+R22
 !i10b 1
-R36
-R56
-R57
+R28
+R53
+R54
 !i113 1
 R12
 R13
 Etb_wallace_multiplier
-Z58 w1510510056
+Z55 w1510510056
 R1
 R2
 R3
 R4
-Z59 8D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_wallace_multiplier.vhd
-Z60 FD:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_wallace_multiplier.vhd
+Z56 8D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_wallace_multiplier.vhd
+Z57 FD:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_wallace_multiplier.vhd
 l0
 L5
 V==d0EKQB>D6W68zOWzDcW2
 !s100 DT:FNmYhLKo1ZZ7>THC9j0
 R7
 32
-Z61 !s110 1511716314
+R8
 !i10b 1
-Z62 !s108 1511716313.000000
-Z63 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_wallace_multiplier.vhd|
-Z64 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_wallace_multiplier.vhd|
+R9
+Z58 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_wallace_multiplier.vhd|
+Z59 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_wallace_multiplier.vhd|
 !i113 1
 R12
 R13
@@ -371,42 +371,42 @@ VR]O5@XL2j9bZ:J8Df4zUc1
 !s100 E<U8jn<cd[4R3l=eN5BEd3
 R7
 32
-R61
+R8
 !i10b 1
-R62
-R63
-R64
+R9
+R58
+R59
 !i113 1
 R12
 R13
 Etest_srt_reduction
-Z65 w1510188670
+Z60 w1510188670
 R1
-R39
-R40
+R36
+R37
 R2
 R3
 R4
-Z66 8D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_SRT_Reducer.vhd
-Z67 FD:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_SRT_Reducer.vhd
+Z61 8D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_SRT_Reducer.vhd
+Z62 FD:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_SRT_Reducer.vhd
 l0
 L7
 V1zRAi>ebMH0[o_PgV[G`B1
 !s100 =FPO:NC[RYF`N5TRI2]X]0
 R7
 32
-R61
+R8
 !i10b 1
 R9
-Z68 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_SRT_Reducer.vhd|
-Z69 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_SRT_Reducer.vhd|
+Z63 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_SRT_Reducer.vhd|
+Z64 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_SRT_Reducer.vhd|
 !i113 1
 R12
 R13
 Abehavior
 R1
-R39
-R40
+R36
+R37
 R2
 R3
 DEx4 work 18 test_srt_reduction 0 22 1zRAi>ebMH0[o_PgV[G`B1
@@ -416,33 +416,33 @@ VzDZA9A9I3^TSic8B0EE740
 !s100 :9MPBMjP82^k^31DiPPo@1
 R7
 32
-R61
+R8
 !i10b 1
 R9
-R68
-R69
+R63
+R64
 !i113 1
 R12
 R13
 Ewallace_multiplier
-Z70 w1510511451
+Z65 w1510511451
 R1
 R2
 R3
 R4
-Z71 8D:/Quartus_Projects/Finite_Field_Arithmetic/src/Wallace_Multiplier.vhd
-Z72 FD:/Quartus_Projects/Finite_Field_Arithmetic/src/Wallace_Multiplier.vhd
+Z66 8D:/Quartus_Projects/Finite_Field_Arithmetic/src/Wallace_Multiplier.vhd
+Z67 FD:/Quartus_Projects/Finite_Field_Arithmetic/src/Wallace_Multiplier.vhd
 l0
 L5
 V9fM:XJTA:9GD3@Ra?3W?;1
 !s100 WXEf7j:69nIzKSR9F9<Nn1
 R7
 32
-R35
+R22
 !i10b 1
-R36
-Z73 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/src/Wallace_Multiplier.vhd|
-Z74 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/src/Wallace_Multiplier.vhd|
+R28
+Z68 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/src/Wallace_Multiplier.vhd|
+Z69 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/src/Wallace_Multiplier.vhd|
 !i113 1
 R12
 R13
@@ -457,11 +457,11 @@ VTHc>=3W97>GN4nij=fAEJ3
 !s100 _`<O6kFRYW91[9=?;Uk6h1
 R7
 32
-R35
+R22
 !i10b 1
-R36
-R73
-R74
+R28
+R68
+R69
 !i113 1
 R12
 R13

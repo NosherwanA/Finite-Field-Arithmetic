@@ -92,29 +92,17 @@ begin
                     int_product <= to_integer(unsigned(product));
                     int_modulus <= to_integer(unsigned(m));
 
-                    if ((int_product = 0) OR (int_modulus = 0)) then
-                        next_state <= C;
-                    else
-                        next_state <= D;
-                    end if;
+                    next_state <= D;
                 
                 when D =>
                     int_remainder <= int_product mod int_modulus;
 
-                    if (int_remainder = 0) then
-                        next_state <= D;
-                    else
-                        next_state <= E;
-                    end if;
+                    next_state <= E;
 
                 when E =>
                     remainder <= std_logic_vector(to_unsigned(int_remainder, 8));
 
-                    if (remainder = "00000000") then 
-                        next_state <= E;
-                    else
-                        next_state <= F;
-                    end if;
+                    next_state <= F;
                 
                 when F =>
                     if (reset = '1') then 
