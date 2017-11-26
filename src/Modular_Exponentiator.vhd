@@ -87,7 +87,7 @@ architecture internal of Modular_Exponentiator is
 
         end process;
 
-        Transition_Section: process (clk, curr_state)
+        Transition_Section: process (curr_state)
         begin
 
             case curr_state is
