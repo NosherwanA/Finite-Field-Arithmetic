@@ -87,7 +87,7 @@ architecture internal of Modular_Exponentiator is
 
         end process;
 
-        Transition_Section: process (curr_state)
+        Transition_Section: process (clk, curr_state)
         begin
 
             case curr_state is
@@ -119,8 +119,10 @@ architecture internal of Modular_Exponentiator is
                 when C =>
                     mm_start <= '0';
                     mm_reset <= '0';
-
-                    counter <= counter + 1;
+                    if rising_edge(clk) then
+                        counter <= counter + 1;
+                    else
+                    end if;
                     
                     next_state <= E;
                     

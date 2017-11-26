@@ -33,7 +33,7 @@ architecture test of tb_Modular_Exponentiator is
     signal out_busy         : std_logic:= '0';
 
     constant TIME_PERIOD    : time := 20 ns;
-    constant DELTA_TIME     : time := 10 ns;
+    constant DELTA_TIME     : time := 20 ns;
     
     begin
 
