@@ -29,6 +29,7 @@ architecture internal of Modular_Exponentiator is
 
     signal ITERATIONS       : integer:= 0;
     signal counter          : integer:= 0;
+    signal count_up         : std_logic:= '0';
 
     signal num1             : std_logic_vector(7 downto 0);
     signal num2             : std_logic_vector(7 downto 0);
@@ -93,6 +94,7 @@ architecture internal of Modular_Exponentiator is
             case curr_state is
                 when A =>
                     mm_reset <= '0';
+                    count_up <= '0';
                     num1 <= "00000000";
                     num2 <= "00000000";
                     counter <= 0;
@@ -119,10 +121,11 @@ architecture internal of Modular_Exponentiator is
                 when C =>
                     mm_start <= '0';
                     mm_reset <= '0';
-                    if rising_edge(clk) then
-                        counter <= counter + 1;
-                    else
-                    end if;
+                    count_up <= '1';
+                    --if rising_edge(clk) then
+                        --counter <= counter + 1;
+                    --else
+                    --end if;
                     
                     next_state <= E;
                     
@@ -135,7 +138,7 @@ architecture internal of Modular_Exponentiator is
                     end if;
 
                 when E =>
-
+                    count_up <= '0';
                     if(counter = ITERATIONS) then 
                         next_state <= D;
                     else
@@ -176,6 +179,19 @@ architecture internal of Modular_Exponentiator is
                     busy <= '0';
                     done <= '1';
             end case;            
+
+        end process;
+
+        Counter: process(clk, reset, count_up)
+        begin
+
+            if rising_edge(clk) then
+                if (reset = '0') then
+                    counter <= 0;
+                elsif count_up = '1' then
+                    counter <= counter + 1;
+                end if;
+            end if;
 
         end process;
         
