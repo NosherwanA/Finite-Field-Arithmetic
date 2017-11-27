@@ -50,13 +50,20 @@ begin
 
     Register_Section: process (clk, reset, next_state)
         begin
-            if (reset = '0') then
-                curr_state <= A;
-            elsif (rising_edge(clk)) then 
-                curr_state <= next_state;
-            else
-                curr_state <= curr_state;
+            if rising_edge(clk) then
+                if reset = '0' then
+                    curr_state <= A;
+                else
+                    curr_state <= next_state;
+                end if;
             end if;
+            --if (reset = '0') then
+            --    curr_state <= A;
+            --elsif (rising_edge(clk)) then 
+            --    curr_state <= next_state;
+            --else
+            --    curr_state <= curr_state;
+            --end if;
         end process Register_Section;
 
     Transition_Section: process(clk, curr_state)
