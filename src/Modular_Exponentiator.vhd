@@ -105,7 +105,7 @@ architecture internal of Modular_Exponentiator is
                     count_up <= '0';
                     num1 <= "00000000";
                     num2 <= "00000000";
-                    counter <= 0;
+                    --counter <= 0;
 
                     If (start = '1') then 
                         mm_reset <= '1';
@@ -118,6 +118,7 @@ architecture internal of Modular_Exponentiator is
                         next_state <= A;
                     end if;
                 when B =>
+                    mm_reset <= '1';
                     mm_start <= '1';
                     if (mm_done = '0') then 
                         next_state <= B;
@@ -190,13 +191,13 @@ architecture internal of Modular_Exponentiator is
 
         end process;
 
-        Counter: process(clk, reset, count_up)
+        Counter_Section: process(clk, reset, count_up)
         begin
 
             if rising_edge(clk) then
                 if (reset = '0') then
                     counter <= 0;
-                elsif count_up = '1' then
+                elsif (count_up = '1') then
                     counter <= counter + 1;
                 end if;
             end if;
