@@ -108,7 +108,7 @@ architecture internal of Modular_Exponentiator is
                     --counter <= 0;
 
                     If (start = '1') then 
-                        mm_reset <= '1';
+                        --mm_reset <= '1';
                         num1 <= base;
                         num2 <= base;
                         mm_mod <= modulus;
