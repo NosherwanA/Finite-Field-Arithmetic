@@ -85,7 +85,6 @@ architecture internal of Modular_Exponentiator is
                     curr_state <= next_state;
                 end if;
             end if;
-            
             --if (reset = '0') then
             --    curr_state <= A;
             --elsif (rising_edge(clk)) then
