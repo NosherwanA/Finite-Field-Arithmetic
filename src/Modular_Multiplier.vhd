@@ -32,7 +32,7 @@ architecture internal of Modular_Multiplier is
                     COMPUTE_PROD_MOD,
                     REDUCTION,
                     CONV_REMAINDER,
-                    DONE);
+                    S_DONE);
 
     signal curr_state       : State;
     signal next_state       : State;
@@ -115,13 +115,13 @@ begin
                 when CONV_REMAINDER =>
                     remainder <= std_logic_vector(to_unsigned(int_remainder, 8));
 
-                    next_state <= DONE;
+                    next_state <= S_DONE;
                 
-                when DONE =>
-                    if (reset = '1') then 
+                when S_DONE =>
+                    if (reset = '0') then 
                         next_state <= S_START;
                     else 
-                        next_state <= DONE;
+                        next_state <= S_DONE;
                     end if;
                 
                 when others =>
@@ -159,7 +159,7 @@ begin
                     done <= '0';
                     busy <= '1';
 
-                when DONE =>
+                when S_DONE =>
                     result <= remainder;
                     done <= '1';
                     busy <= '0';
