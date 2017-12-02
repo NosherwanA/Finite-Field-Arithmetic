@@ -109,7 +109,7 @@ architecture internal of Modular_Exponentiator is
                         --num1 <= base;
                         --num2 <= base;
                         --mm_mod <= modulus;
-                        ITERATIONS <= ((to_integer(unsigned(exponent))) - 1);
+                        --ITERATIONS <= ((to_integer(unsigned(exponent))) - 1);
                         next_state <= F;
                     else
                         next_state <= A;
@@ -161,7 +161,7 @@ architecture internal of Modular_Exponentiator is
                     ITERATIONS <= ((to_integer(unsigned(exponent))) - 1);
 
                     next_state <= B;
-                    
+
 
 
 
@@ -177,6 +177,11 @@ architecture internal of Modular_Exponentiator is
                     result <= "00000000";
                     busy <= '0';
                     done <= '0';
+                when F =>
+                    result <= "00000000";
+                    busy <= '1';
+                    done <= '0';
+                    
                 when B =>
                     result <= "00000000";
                     busy <= '1';
