@@ -18,7 +18,12 @@ end Modular_Exponentiator;
 
 architecture internal of Modular_Exponentiator is 
 
-    type State_Type is (A, B, C, D, E, F);
+    type State_Type is (S_START,
+                        MULTIPLICATION,
+                        INCREMENT_COUNTER,
+                        S_DONE,
+                        COMPARE_COUNTER_ITERATIONS,
+                        INITIAL_SETUP);
       
 
     signal curr_state       : State_Type;
@@ -77,7 +82,7 @@ architecture internal of Modular_Exponentiator is
 
             if rising_edge(clk) then
                 if (reset = '0') then
-                    curr_state <= A;
+                    curr_state <= S_START;
                 else
                     curr_state <= next_state;
                 end if;
@@ -96,7 +101,7 @@ architecture internal of Modular_Exponentiator is
         begin
 
             case curr_state is
-                when A =>
+                when S_START =>
                     mm_reset <= '0';
                     count_up <= '0';
                     num1 <= "00000000";
@@ -110,21 +115,21 @@ architecture internal of Modular_Exponentiator is
                         --num2 <= base;
                         --mm_mod <= modulus;
                         --ITERATIONS <= ((to_integer(unsigned(exponent))) - 1);
-                        next_state <= F;
+                        next_state <= INITIAL_SETUP;
                     else
-                        next_state <= A;
+                        next_state <= S_START;
                     end if;
-                when B =>
+                when MULTIPLICATION =>
                     mm_reset <= '1';
                     mm_start <= '1';
                     if (mm_done = '0') then 
-                        next_state <= B;
+                        next_state <= MULTIPLICATION;
                     else 
                         temp <= mm_result;
-                        next_state <= C;
+                        next_state <= INCREMENT_COUNTER;
                     end if;
 
-                when C =>
+                when INCREMENT_COUNTER =>
                     mm_start <= '0';
                     mm_reset <= '0';
                     count_up <= '1';
@@ -133,37 +138,34 @@ architecture internal of Modular_Exponentiator is
                     --else
                     --end if;
                     
-                    next_state <= E;
+                    next_state <= COMPARE_COUNTER_ITERATIONS;
                     
 
-                when D =>
+                when S_DONE =>
                     --mm_reset <= '0';
                     if (reset = '0') then
-                        next_state <= A;
+                        next_state <= S_START;
                     else
-                        next_state <= D;
+                        next_state <= S_DONE;
                     end if;
 
-                when E =>
+                when COMPARE_COUNTER_ITERATIONS =>
                     count_up <= '0';
                     if(counter = ITERATIONS) then 
-                        next_state <= D;
+                        next_state <= S_DONE;
                     else
                         num2 <= temp;
                         mm_reset <= '1';
-                        next_state <= B;
+                        next_state <= MULTIPLICATION;
                     end if;
                 
-                when F =>
+                when INITIAL_SETUP =>
                     num1 <= base;
                     num2 <= base;
                     mm_mod <= modulus;
                     ITERATIONS <= ((to_integer(unsigned(exponent))) - 1);
 
-                    next_state <= B;
-
-
-
+                    next_state <= MULTIPLICATION;
 
             end case;
         
@@ -173,30 +175,30 @@ architecture internal of Modular_Exponentiator is
         begin
 
             case curr_state is
-                when A =>
+                when S_START =>
                     result <= "00000000";
                     busy <= '0';
                     done <= '0';
-                when F =>
-                    result <= "00000000";
-                    busy <= '1';
-                    done <= '0';
-                    
-                when B =>
-                    result <= "00000000";
-                    busy <= '1';
-                    done <= '0';
-                when C =>
-                    result <= "00000000";
-                    busy <= '1';
-                    done <= '0';
-                
-                when E =>
+                when INITIAL_SETUP =>
                     result <= "00000000";
                     busy <= '1';
                     done <= '0';
 
-                when D =>
+                when MULTIPLICATION =>
+                    result <= "00000000";
+                    busy <= '1';
+                    done <= '0';
+                when INCREMENT_COUNTER =>
+                    result <= "00000000";
+                    busy <= '1';
+                    done <= '0';
+                
+                when COMPARE_COUNTER_ITERATIONS =>
+                    result <= "00000000";
+                    busy <= '1';
+                    done <= '0';
+
+                when S_DONE =>
                     result <= temp;
                     busy <= '0';
                     done <= '1';
