@@ -2,9 +2,6 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
---DOuble COUNTING NO CLUE
-
-
 entity Modular_Exponentiator is
     port(
         base            : in std_logic_vector(7 downto 0);
@@ -100,7 +97,7 @@ architecture internal of Modular_Exponentiator is
 
             case curr_state is
                 when A =>
-                    mm_reset <= '0';
+                    mm_reset <= '1';
                     count_up <= '0';
                     num1 <= "00000000";
                     num2 <= "00000000";
@@ -117,7 +114,7 @@ architecture internal of Modular_Exponentiator is
                         next_state <= A;
                     end if;
                 when B =>
-                    mm_reset <= '1';
+                    --mm_reset <= '1';
                     mm_start <= '1';
                     if (mm_done = '0') then 
                         next_state <= B;
@@ -139,6 +136,7 @@ architecture internal of Modular_Exponentiator is
                     
 
                 when D =>
+                    mm_reset <= '0';
                     if (reset = '0') then
                         next_state <= A;
                     else

@@ -61,18 +61,18 @@ architecture test of tb_Modular_Exponentiator is
         simulation : process
         begin
             -- rising edge of clock firs one at 10 ns then every 20ns
-            --in_reset <= '0';
-            --in_base <= "01011001"; -- (89)10
-            --in_exponent <= "10111010"; -- (186)10
-            --in_modulus <= "01110100"; -- (116)10
-            --wait for 15 ns;
-            --in_reset <= '1';
-            --in_start <= '1';
-            --wait for 20 ns;
-            --in_start <= '0';
-            --wait until (out_done = '1');
+            in_reset <= '0';
+            in_base <= "01011001"; -- (89)10
+            in_exponent <= "10111010"; -- (186)10
+            in_modulus <= "01110100"; -- (116)10
+            wait for 15 ns;
+            in_reset <= '1';
+            in_start <= '1';
+            wait for 20 ns;
+            in_start <= '0';
+            wait until (out_done = '1');
             --result: 00001101  (13)10
-            --wait for DELTA_TIME;
+            wait for DELTA_TIME;
 
 
             in_reset <= '0';
