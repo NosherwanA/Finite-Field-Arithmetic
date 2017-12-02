@@ -75,6 +75,19 @@ architecture test of tb_Modular_Multiplier is
             wait for DELTA_TIME;
 
             in_reset <= '0';
+            in_x <= "11001101";
+            in_y <= "10010000";
+            in_m <= "00110000";
+            wait for 15 ns;
+            in_reset <= '1';
+            in_start <= '1';
+            wait for 20 ns;
+            in_start <= '0';
+            wait until (out_done = '1');
+            --result: 00000000
+            wait for DELTA_TIME;
+
+            in_reset <= '0';
             in_x <= "10001100";
             in_y <= "00111011";
             in_m <= "10011000";
