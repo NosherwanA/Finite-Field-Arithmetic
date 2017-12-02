@@ -18,7 +18,7 @@ end Modular_Exponentiator;
 
 architecture internal of Modular_Exponentiator is 
 
-    type State_Type is (A, B, C, D, E);
+    type State_Type is (A, B, C, D, E, F);
       
 
     signal curr_state       : State_Type;
@@ -106,11 +106,11 @@ architecture internal of Modular_Exponentiator is
 
                     If (start = '1') then 
                         --mm_reset <= '1';
-                        num1 <= base;
-                        num2 <= base;
-                        mm_mod <= modulus;
+                        --num1 <= base;
+                        --num2 <= base;
+                        --mm_mod <= modulus;
                         ITERATIONS <= ((to_integer(unsigned(exponent))) - 1);
-                        next_state <= B;
+                        next_state <= F;
                     else
                         next_state <= A;
                     end if;
@@ -153,6 +153,16 @@ architecture internal of Modular_Exponentiator is
                         mm_reset <= '1';
                         next_state <= B;
                     end if;
+                
+                when F =>
+                    num1 <= base;
+                    num2 <= base;
+                    mm_mod <= modulus;
+                    ITERATIONS <= ((to_integer(unsigned(exponent))) - 1);
+
+                    next_state <= B;
+                    
+
 
 
             end case;
