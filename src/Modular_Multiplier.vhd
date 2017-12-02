@@ -27,7 +27,13 @@ architecture internal of Modular_Multiplier is
     end component;
 
     --State Machine Variables
-    type State is (A,B,C,D,E,F);
+    type State is  (S_START,
+                    MULTIPLICATION,
+                    COMPUTE_PROD_MOD,
+                    REDUCTION,
+                    CONV_REMAINDER,
+                    DONE);
+
     signal curr_state       : State;
     signal next_state       : State;
 
@@ -52,7 +58,7 @@ begin
         begin
             if rising_edge(clk) then
                 if reset = '0' then
-                    curr_state <= A;
+                    curr_state <= S_START;
                 else
                     curr_state <= next_state;
                 end if;
@@ -69,57 +75,57 @@ begin
     Transition_Section: process(clk, curr_state)
         begin
             case curr_state is
-                when A =>
+                when S_START =>
                     num1 <= "00000000";
                     num2 <= "00000000";
 
                     if (start = '1') then
-                        next_state <= B;
+                        next_state <= MULTIPLICATION;
                     else 
-                        next_state <= A;
+                        next_state <= S_START;
                     end if;
                 
-                when B =>
+                when MULTIPLICATION =>
                     num1 <= x;
                     num2 <= y;
 
                     if (product = "0000000000000000") then 
                         if (x = "00000000") then
-                            next_state <= C;
+                            next_state <= COMPUTE_PROD_MOD;
                         elsif (y = "00000000") then 
-                            next_state <= C;
+                            next_state <= COMPUTE_PROD_MOD;
                         else
-                            next_state <= B;
+                            next_state <= MULTIPLICATION;
                         end if;
                     else
-                        next_state <= C;
+                        next_state <= COMPUTE_PROD_MOD;
                     end if;
                 
-                when C =>
+                when COMPUTE_PROD_MOD =>
                     int_product <= to_integer(unsigned(product));
                     int_modulus <= to_integer(unsigned(m));
 
-                    next_state <= D;
+                    next_state <= REDUCTION;
                 
-                when D =>
+                when REDUCTION =>
                     int_remainder <= int_product mod int_modulus;
 
-                    next_state <= E;
+                    next_state <= CONV_REMAINDER;
 
-                when E =>
+                when CONV_REMAINDER =>
                     remainder <= std_logic_vector(to_unsigned(int_remainder, 8));
 
-                    next_state <= F;
+                    next_state <= DONE;
                 
-                when F =>
+                when DONE =>
                     if (reset = '1') then 
-                        next_state <= A;
+                        next_state <= S_START;
                     else 
-                        next_state <= D;
+                        next_state <= DONE;
                     end if;
                 
                 when others =>
-                    next_state <= A; 
+                    next_state <= S_START; 
 
             end case;
 
@@ -128,32 +134,32 @@ begin
     Decoder_Section: process(curr_state)
         begin
             case curr_state is 
-                when A =>
+                when S_START =>
                     result <= "00000000";
                     done <= '0';
                     busy <= '0';
                 
-                when B =>
+                when MULTIPLICATION =>
                     result <= "00000000";
                     done <= '0';
                     busy <= '1';
                 
-                when C =>
+                when COMPUTE_PROD_MOD =>
                     result <= "00000000";
                     done <= '0';
                     busy <= '1';
                 
-                when D =>
+                when REDUCTION =>
                     result <= "00000000";
                     done <= '0';
                     busy <= '1';
 
-                when E =>
+                when CONV_REMAINDER =>
                     result <= "00000000";
                     done <= '0';
                     busy <= '1';
 
-                when F =>
+                when DONE =>
                     result <= remainder;
                     done <= '1';
                     busy <= '0';
