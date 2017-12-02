@@ -87,14 +87,6 @@ architecture internal of Modular_Exponentiator is
                     curr_state <= next_state;
                 end if;
             end if;
-            --if (reset = '0') then
-            --    curr_state <= A;
-            --elsif (rising_edge(clk)) then
-            --    curr_state <= next_state;
-            --else
-            --    curr_state <= curr_state;
-            --end if;
-
         end process;
 
         Transition_Section: process (clk, curr_state)
@@ -107,18 +99,21 @@ architecture internal of Modular_Exponentiator is
                     num1 <= "00000000";
                     num2 <= "00000000";
                     temp <= "00000000";
-                    --counter <= 0;
 
                     If (start = '1') then 
-                        --mm_reset <= '1';
-                        --num1 <= base;
-                        --num2 <= base;
-                        --mm_mod <= modulus;
-                        --ITERATIONS <= ((to_integer(unsigned(exponent))) - 1);
                         next_state <= INITIAL_SETUP;
                     else
                         next_state <= S_START;
                     end if;
+
+                when INITIAL_SETUP =>
+                    num1 <= base;
+                    num2 <= base;
+                    mm_mod <= modulus;
+                    ITERATIONS <= ((to_integer(unsigned(exponent))) - 1);
+
+                    next_state <= MULTIPLICATION;
+
                 when MULTIPLICATION =>
                     mm_reset <= '1';
                     mm_start <= '1';
@@ -133,22 +128,9 @@ architecture internal of Modular_Exponentiator is
                     mm_start <= '0';
                     mm_reset <= '0';
                     count_up <= '1';
-                    --if rising_edge(clk) then
-                        --counter <= counter + 1;
-                    --else
-                    --end if;
-                    
+
                     next_state <= COMPARE_COUNTER_ITERATIONS;
                     
-
-                when S_DONE =>
-                    --mm_reset <= '0';
-                    if (reset = '0') then
-                        next_state <= S_START;
-                    else
-                        next_state <= S_DONE;
-                    end if;
-
                 when COMPARE_COUNTER_ITERATIONS =>
                     count_up <= '0';
                     if(counter = ITERATIONS) then 
@@ -158,15 +140,14 @@ architecture internal of Modular_Exponentiator is
                         mm_reset <= '1';
                         next_state <= MULTIPLICATION;
                     end if;
+
+                when S_DONE =>
+                    if (reset = '0') then
+                        next_state <= S_START;
+                    else
+                        next_state <= S_DONE;
+                    end if;
                 
-                when INITIAL_SETUP =>
-                    num1 <= base;
-                    num2 <= base;
-                    mm_mod <= modulus;
-                    ITERATIONS <= ((to_integer(unsigned(exponent))) - 1);
-
-                    next_state <= MULTIPLICATION;
-
             end case;
         
         end process;
@@ -179,6 +160,7 @@ architecture internal of Modular_Exponentiator is
                     result <= "00000000";
                     busy <= '0';
                     done <= '0';
+
                 when INITIAL_SETUP =>
                     result <= "00000000";
                     busy <= '1';
@@ -188,6 +170,7 @@ architecture internal of Modular_Exponentiator is
                     result <= "00000000";
                     busy <= '1';
                     done <= '0';
+
                 when INCREMENT_COUNTER =>
                     result <= "00000000";
                     busy <= '1';
@@ -202,6 +185,7 @@ architecture internal of Modular_Exponentiator is
                     result <= temp;
                     busy <= '0';
                     done <= '1';
+                    
             end case;            
 
         end process;
