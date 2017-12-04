@@ -32,6 +32,7 @@ architecture internal of Modular_Exponentiator is
     signal ITERATIONS       : integer:= 0;
     signal counter          : integer:= 0;
     signal count_up         : std_logic:= '0';
+    signal count_clear      : std_logic:= '0';
 
     signal num1             : std_logic_vector(7 downto 0);
     signal num2             : std_logic_vector(7 downto 0);
@@ -98,7 +99,8 @@ architecture internal of Modular_Exponentiator is
                     count_up <= '0';
                     num1 <= "00000000";
                     num2 <= "00000000";
-                    temp <= "00000000";
+                    --temp <= "00000000";
+                    count_clear <= '1';
 
                     If (start = '1') then 
                         next_state <= INITIAL_SETUP;
@@ -110,6 +112,7 @@ architecture internal of Modular_Exponentiator is
                     num1 <= base;
                     num2 <= base;
                     mm_mod <= modulus;
+                    count_clear <= '0';
                     ITERATIONS <= ((to_integer(unsigned(exponent))) - 1);
 
                     next_state <= MULTIPLICATION;
@@ -134,7 +137,7 @@ architecture internal of Modular_Exponentiator is
                 when COMPARE_COUNTER_ITERATIONS =>
                     count_up <= '0';
                     if(counter = ITERATIONS) then 
-                        next_state <= S_DONE;
+                        next_state <= S_START;
                     else
                         num2 <= temp;
                         mm_reset <= '1';
@@ -157,9 +160,9 @@ architecture internal of Modular_Exponentiator is
 
             case curr_state is
                 when S_START =>
-                    result <= "00000000";
+                    result <= temp;
                     busy <= '0';
-                    done <= '0';
+                    done <= '1';
 
                 when INITIAL_SETUP =>
                     result <= "00000000";
@@ -190,11 +193,13 @@ architecture internal of Modular_Exponentiator is
 
         end process;
 
-        Counter_Section: process(clk, reset, count_up)
+        Counter_Section: process(clk, reset, count_up, count_clear)
         begin
 
             if rising_edge(clk) then
                 if (reset = '0') then
+                    counter <= 0;
+                elsif (count_clear = '1') then
                     counter <= 0;
                 elsif (count_up = '1') then
                     counter <= counter + 1;
