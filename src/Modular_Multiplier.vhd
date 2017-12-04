@@ -115,7 +115,7 @@ begin
                 when CONV_REMAINDER =>
                     remainder <= std_logic_vector(to_unsigned(int_remainder, 8));
 
-                    next_state <= S_DONE;
+                    next_state <= S_START;
                 
                 when S_DONE =>
                     if (reset = '0') then 
@@ -135,8 +135,8 @@ begin
         begin
             case curr_state is 
                 when S_START =>
-                    result <= "00000000";
-                    done <= '0';
+                    result <= remainder;
+                    done <= '1';
                     busy <= '0';
                 
                 when MULTIPLICATION =>
