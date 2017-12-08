@@ -18,10 +18,10 @@ end Modular_Exponentiator;
 
 architecture internal of Modular_Exponentiator is 
 
-    type State_Type is (S_START,
+    type State_Type is (S_RESET,
                         MULTIPLICATION,
                         INCREMENT_COUNTER,
-                        S_DONE,
+                        IDLE,
                         COMPARE_COUNTER_ITERATIONS,
                         INITIAL_SETUP);
       
@@ -83,7 +83,7 @@ architecture internal of Modular_Exponentiator is
 
             if rising_edge(clk) then
                 if (reset = '0') then
-                    curr_state <= S_START;
+                    curr_state <= S_RESET;
                 else
                     curr_state <= next_state;
                 end if;
@@ -94,7 +94,7 @@ architecture internal of Modular_Exponentiator is
         begin
 
             case curr_state is
-                when S_START =>
+                when S_RESET =>
                     mm_reset <= '0';
                     count_up <= '0';
                     num1 <= "00000000";
@@ -105,7 +105,20 @@ architecture internal of Modular_Exponentiator is
                     If (start = '1') then 
                         next_state <= INITIAL_SETUP;
                     else
-                        next_state <= S_START;
+                        next_state <= S_RESET;
+                    end if;
+
+                when IDLE =>
+                    mm_reset <= '0';
+                    count_up <= '0';
+                    num1 <= "00000000";
+                    num2 <= "00000000";
+                    count_clear <= '1';
+
+                    If (start = '1') then 
+                        next_state <= INITIAL_SETUP;
+                    else
+                        next_state <= IDLE;
                     end if;
 
                 when INITIAL_SETUP =>
@@ -144,12 +157,7 @@ architecture internal of Modular_Exponentiator is
                         next_state <= MULTIPLICATION;
                     end if;
 
-                when S_DONE =>
-                    if (reset = '0') then
-                        next_state <= S_START;
-                    else
-                        next_state <= S_DONE;
-                    end if;
+                
                 
             end case;
         
@@ -159,7 +167,7 @@ architecture internal of Modular_Exponentiator is
         begin
 
             case curr_state is
-                when S_START =>
+                when S_RESET =>
                     result <= temp;
                     busy <= '0';
                     done <= '1';
@@ -184,7 +192,7 @@ architecture internal of Modular_Exponentiator is
                     busy <= '1';
                     done <= '0';
 
-                when S_DONE =>
+                when S_IDLE =>
                     result <= temp;
                     busy <= '0';
                     done <= '1';
