@@ -27,7 +27,7 @@ architecture internal of Modular_Multiplier is
     end component;
 
     --State Machine Variables
-    type State is  (S_START,
+    type State is  (IDLE,
                     MULTIPLICATION,
                     COMPUTE_PROD_MOD,
                     REDUCTION,
@@ -58,7 +58,7 @@ begin
         begin
             if rising_edge(clk) then
                 if reset = '0' then
-                    curr_state <= S_START;
+                    curr_state <= IDLE;
                 else
                     curr_state <= next_state;
                 end if;
@@ -75,7 +75,7 @@ begin
     Transition_Section: process(clk, curr_state)
         begin
             case curr_state is
-                when S_START =>
+                when IDLE =>
                     num1 <= "00000000";
                     num2 <= "00000000";
 
@@ -134,7 +134,7 @@ begin
     Decoder_Section: process(curr_state)
         begin
             case curr_state is 
-                when S_START =>
+                when IDLE =>
                     result <= remainder;
                     done <= '1';
                     busy <= '0';
