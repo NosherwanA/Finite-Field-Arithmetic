@@ -96,20 +96,11 @@ architecture internal of Modular_Exponentiator is
             case curr_state is
                 when S_RESET =>
                     mm_reset <= '0';
-                    count_up <= '0';
-                    num1 <= "00000000";
-                    num2 <= "00000000";
-                    --temp <= "00000000";
-                    count_clear <= '1';
 
-                    If (start = '1') then 
-                        next_state <= INITIAL_SETUP;
-                    else
-                        next_state <= S_RESET;
-                    end if;
+                    next_state <= IDLE;
 
                 when IDLE =>
-                    mm_reset <= '0';
+                    mm_reset <= '1';
                     count_up <= '0';
                     num1 <= "00000000";
                     num2 <= "00000000";
@@ -126,6 +117,7 @@ architecture internal of Modular_Exponentiator is
                     num2 <= base;
                     mm_mod <= modulus;
                     count_clear <= '0';
+                    temp <= "00000000";
                     ITERATIONS <= ((to_integer(unsigned(exponent))) - 1);
 
                     next_state <= MULTIPLICATION;
@@ -157,8 +149,6 @@ architecture internal of Modular_Exponentiator is
                         next_state <= MULTIPLICATION;
                     end if;
 
-                
-                
             end case;
         
         end process;
@@ -168,6 +158,11 @@ architecture internal of Modular_Exponentiator is
 
             case curr_state is
                 when S_RESET =>
+                    result <= "00000000";
+                    busy <= '1';
+                    done <= '1';
+
+                when IDLE =>
                     result <= temp;
                     busy <= '0';
                     done <= '1';
@@ -191,11 +186,6 @@ architecture internal of Modular_Exponentiator is
                     result <= "00000000";
                     busy <= '1';
                     done <= '0';
-
-                when S_IDLE =>
-                    result <= temp;
-                    busy <= '0';
-                    done <= '1';
                     
             end case;            
 
