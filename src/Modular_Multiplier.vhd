@@ -75,7 +75,7 @@ begin
                     if (start = '1') then
                         next_state <= MULTIPLICATION;
                     else 
-                        next_state <= S_START;
+                        next_state <= IDLE;
                     end if;
                 
                 when MULTIPLICATION =>
