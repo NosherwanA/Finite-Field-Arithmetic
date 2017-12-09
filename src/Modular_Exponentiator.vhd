@@ -39,7 +39,6 @@ architecture internal of Modular_Exponentiator is
     signal mm_mod           : std_logic_vector(7 downto 0);
     signal mm_result        : std_logic_vector(7 downto 0);
     signal mm_start         : std_logic;
-    signal mm_reset         : std_logic;
     signal mm_busy          : std_logic;
     signal mm_done          : std_logic;
 
@@ -95,13 +94,11 @@ architecture internal of Modular_Exponentiator is
 
             case curr_state is
                 when S_RESET =>
-                    mm_reset <= '0';
                     temp <= "00000000";
 
                     next_state <= IDLE;
 
                 when IDLE =>
-                    mm_reset <= '1';
                     count_up <= '0';
                     num1 <= "00000000";
                     num2 <= "00000000";
