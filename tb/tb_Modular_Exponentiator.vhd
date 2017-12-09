@@ -72,7 +72,7 @@ architecture test of tb_Modular_Exponentiator is
             in_base <= "01011001"; -- (89)10
             in_exponent <= "10111010"; -- (186)10
             in_modulus <= "01110100"; -- (116)10
-            wait for 15 ns;
+            wait for 25 ns;
             in_start <= '0';
             wait until (out_done = '1');
             --result: 00001101  (13)10
@@ -83,7 +83,7 @@ architecture test of tb_Modular_Exponentiator is
             in_base <= "11101010"; -- (234)10
             in_exponent <= "11000101"; -- (197)10
             in_modulus <= "11011000"; -- (216)10
-            wait for 10 ns;
+            wait for 25 ns;
             in_start <= '0';
             wait until (out_done = '1');
             --result: 00000000  (0)10
@@ -93,7 +93,7 @@ architecture test of tb_Modular_Exponentiator is
             in_base <= "00000011"; -- (3)10
             in_exponent <= "11101000"; -- (232)10
             in_modulus <= "00000100"; -- (4)10
-            wait for 10 ns;
+            wait for 25 ns;
             in_start <= '0';
             wait until (out_done = '1');
             --result: 00000001  (1)10 runtime: 37000 ns;
@@ -103,7 +103,7 @@ architecture test of tb_Modular_Exponentiator is
             in_base <= "10010011"; -- (147)10
             in_exponent <= "11000110"; -- (198)10
             in_modulus <= "10110111"; -- (183)10
-            wait for 10 ns;
+            wait for 25 ns;
             in_start <= '0';
             wait until (out_done = '1');
             --result: 00001001  (9)10 runtime: 37000 ns
@@ -113,7 +113,7 @@ architecture test of tb_Modular_Exponentiator is
             in_base <= "11110110"; -- (246)10
             in_exponent <= "00111001"; -- (57)10
             in_modulus <= "01101000"; -- (104)10
-            wait for 10 ns;
+            wait for 25 ns;
             in_start <= '0';
             wait until (out_done = '1');
             --result: 01000000  (64)10 runtime: 9000 ns
