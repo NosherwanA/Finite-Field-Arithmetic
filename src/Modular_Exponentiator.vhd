@@ -141,7 +141,6 @@ architecture internal of Modular_Exponentiator is
                         next_state <= IDLE;
                     else
                         num2 <= temp;
-                        mm_reset <= '1';
                         next_state <= MULTIPLICATION;
                     end if;
 
