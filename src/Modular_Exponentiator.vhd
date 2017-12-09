@@ -121,7 +121,6 @@ architecture internal of Modular_Exponentiator is
                     next_state <= MULTIPLICATION;
 
                 when MULTIPLICATION =>
-                    mm_reset <= '1';
                     mm_start <= '1';
                     if (mm_done = '0') then 
                         next_state <= MULTIPLICATION;
@@ -132,7 +131,6 @@ architecture internal of Modular_Exponentiator is
 
                 when INCREMENT_COUNTER =>
                     mm_start <= '0';
-                    mm_reset <= '0';
                     count_up <= '1';
 
                     next_state <= COMPARE_COUNTER_ITERATIONS;
