@@ -72,7 +72,7 @@ architecture internal of Modular_Exponentiator is
                 mm_result,
                 clk,
                 mm_start,
-                mm_reset,
+                reset,
                 mm_done,
                 mm_busy
             );

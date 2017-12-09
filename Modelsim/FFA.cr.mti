@@ -63,18 +63,7 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity tb_wallace_multiplier
 -- Compiling architecture test of tb_wallace_multiplier
 
-} {} {}} D:/Quartus_Projects/Finite_Field_Arithmetic/src/Modular_Exponentiator.vhd {0 {vcom -work work -2002 -explicit -stats=none D:/Quartus_Projects/Finite_Field_Arithmetic/src/Modular_Exponentiator.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity Modular_Exponentiator
--- Compiling architecture internal of Modular_Exponentiator
-** Error: D:/Quartus_Projects/Finite_Field_Arithmetic/src/Modular_Exponentiator.vhd(145): (vcom-1136) Unknown identifier "S_START".
-** Error: D:/Quartus_Projects/Finite_Field_Arithmetic/src/Modular_Exponentiator.vhd(209): VHDL Compiler exiting
-
-} {9.0 11.0} {}} D:/Quartus_Projects/Finite_Field_Arithmetic/src/Wallace_Multiplier.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Quartus_Projects/Finite_Field_Arithmetic/src/Wallace_Multiplier.vhd
+} {} {}} D:/Quartus_Projects/Finite_Field_Arithmetic/src/Wallace_Multiplier.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Quartus_Projects/Finite_Field_Arithmetic/src/Wallace_Multiplier.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
