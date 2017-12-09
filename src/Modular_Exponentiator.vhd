@@ -20,6 +20,7 @@ architecture internal of Modular_Exponentiator is
 
     type State_Type is (S_RESET,
                         MULTIPLICATION,
+                        MULT_WAIT,
                         INCREMENT_COUNTER,
                         IDLE,
                         COMPARE_COUNTER_ITERATIONS,
@@ -122,8 +123,18 @@ architecture internal of Modular_Exponentiator is
 
                 when MULTIPLICATION =>
                     mm_start <= '1';
-                    if (mm_done = '0') then 
-                        next_state <= MULTIPLICATION;
+                    next_state <= MULT_WAIT;
+                    --if (mm_done = '0') then 
+                    --    next_state <= MULTIPLICATION;
+                    --else 
+                    --    temp <= mm_result;
+                    --    next_state <= INCREMENT_COUNTER;
+                    --end if;
+
+                when MULT_WAIT =>
+                     if (mm_done = '0') then 
+                        next_state <= MULT_WAIT;
+                        temp <= "00000000";
                     else 
                         temp <= mm_result;
                         next_state <= INCREMENT_COUNTER;
@@ -168,6 +179,11 @@ architecture internal of Modular_Exponentiator is
                     done <= '0';
 
                 when MULTIPLICATION =>
+                    result <= "00000000";
+                    busy <= '1';
+                    done <= '0';
+                
+                when MULT_WAIT =>
                     result <= "00000000";
                     busy <= '1';
                     done <= '0';
