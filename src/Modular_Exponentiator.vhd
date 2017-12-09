@@ -96,6 +96,7 @@ architecture internal of Modular_Exponentiator is
             case curr_state is
                 when S_RESET =>
                     mm_reset <= '0';
+                    temp <= "00000000";
 
                     next_state <= IDLE;
 
