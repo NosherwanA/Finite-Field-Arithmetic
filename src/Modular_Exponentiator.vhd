@@ -142,7 +142,7 @@ architecture internal of Modular_Exponentiator is
                 when COMPARE_COUNTER_ITERATIONS =>
                     count_up <= '0';
                     if(counter = ITERATIONS) then 
-                        next_state <= S_START;
+                        next_state <= IDLE;
                     else
                         num2 <= temp;
                         mm_reset <= '1';
