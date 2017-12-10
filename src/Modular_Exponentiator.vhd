@@ -134,7 +134,7 @@ architecture internal of Modular_Exponentiator is
                 when MULT_WAIT =>
                      if (mm_done = '0') then 
                         next_state <= MULT_WAIT;
-                        temp <= "00000000";
+                        --temp <= "00000000";
                     else 
                         temp <= mm_result;
                         next_state <= INCREMENT_COUNTER;
