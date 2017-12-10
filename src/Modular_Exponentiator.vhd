@@ -134,14 +134,16 @@ architecture internal of Modular_Exponentiator is
                 when MULT_WAIT =>
                      if (mm_done = '0') then 
                         next_state <= MULT_WAIT;
+                        
                         --temp <= "00000000";
                     else 
                         temp <= mm_result;
+                        mm_start <= '0';
                         next_state <= INCREMENT_COUNTER;
                     end if;
 
                 when INCREMENT_COUNTER =>
-                    mm_start <= '0';
+                    --mm_start <= '0';
                     count_up <= '1';
 
                     next_state <= COMPARE_COUNTER_ITERATIONS;
