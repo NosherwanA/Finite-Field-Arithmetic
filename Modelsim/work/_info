@@ -22,9 +22,9 @@ VXefXJT:[4iFi3je4MZzf^3
 !s100 2=<lJ`WYAnf1dIBGY0mn@2
 Z7 OV;C;10.5b;63
 32
-Z8 !s110 1512840733
+Z8 !s110 1512923860
 !i10b 1
-Z9 !s108 1512840733.000000
+Z9 !s108 1512923860.000000
 Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/src/Full_Adder.vhd|
 Z11 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/src/Full_Adder.vhd|
 !i113 1
@@ -145,9 +145,9 @@ V^O1ddFYJmB^^1]d8mzjna2
 !s100 ;k479VjNQ?:M;nEm`?CdX1
 R7
 32
-Z29 !s110 1512840734
+Z29 !s110 1512923861
 !i10b 1
-Z30 !s108 1512840734.000000
+Z30 !s108 1512923861.000000
 Z31 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/src/Modular_Exponentiator.vhd|
 Z32 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/src/Modular_Exponentiator.vhd|
 !i113 1
@@ -205,7 +205,7 @@ VlbkOJI=7WV6``o1nF6i:`0
 !s100 BF]C4UOm7]R6[LIYUMzkm1
 R7
 32
-R8
+R29
 !i10b 1
 R9
 R36
@@ -257,7 +257,7 @@ R45
 R12
 R13
 Etb_modular_exponentiator
-Z46 w1512838093
+Z46 w1512923314
 R1
 R2
 R3
@@ -298,7 +298,7 @@ R50
 R12
 R13
 Etb_modular_multiplier
-Z54 w1512233222
+Z54 w1512923667
 R1
 R2
 R3
@@ -313,7 +313,7 @@ R7
 32
 R29
 !i10b 1
-R9
+R30
 Z57 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_Modular_Multiplier.vhd|
 Z58 !s107 D:/Quartus_Projects/Finite_Field_Arithmetic/tb/tb_Modular_Multiplier.vhd|
 !i113 1
@@ -326,13 +326,13 @@ R3
 DEx4 work 21 tb_modular_multiplier 0 22 aOlzCRg:NfT`2CYCkm_n31
 l38
 L9
-VHK5L@8C3OU6QhozS@HK=m2
-!s100 VRT5Bfc^_gS@`JH1=A6QR0
+V?_AK^MQ6=7^SL@2hOUb<c2
+!s100 V6zUD`^XmcV=in@XI[GT?3
 R7
 32
 R29
 !i10b 1
-R9
+R30
 R57
 R58
 !i113 1
